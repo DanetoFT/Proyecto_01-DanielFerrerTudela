@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Gema1
+  - Gema2
+  - Gema3
+  - Gema4
   layers:
   - Default
   - TransparentFX

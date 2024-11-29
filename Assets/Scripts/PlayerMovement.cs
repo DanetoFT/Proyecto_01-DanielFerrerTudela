@@ -37,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
         CoolDown();
     }
 
+
+    //Esto es para el pequeño paneo del principio, me pareció que quedaba chulo
     void CoolDown()
     {
         cooldown += Time.deltaTime;
@@ -47,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    //Esto es para el pequeño paneo del principio, me pareció que quedaba chulo
     void VelocidadCamara()
     {
         cameraSmootSpeed += Time.deltaTime;
@@ -67,26 +70,49 @@ public class PlayerMovement : MonoBehaviour
         float moveX = 0f;
         float moveZ = 0f;
 
+        //pido perdón por tantos ifs y elses pero no encontraba otra forma de hacer las animaciones de movimiento
+
         if (Input.GetKey(KeyCode.W))
         {
             moveZ = +1f;
             playerAnim.SetFloat("Speed", 1f);
         }
+        else if (Input.GetKeyUp(KeyCode.W))
+        {
+            playerAnim.SetFloat("Speed", 0f);
+        }
+
         if (Input.GetKey(KeyCode.S))
         {
             moveZ = -1f;
             playerAnim.SetFloat("Speed", 1f);
         }
+        else if (Input.GetKeyUp(KeyCode.S))
+        {
+            playerAnim.SetFloat("Speed", 0f);
+        }
+
         if (Input.GetKey(KeyCode.A))
         {
             moveX = -1f;
             playerAnim.SetFloat("Speed", 1f);
         }
+        else if (Input.GetKeyUp(KeyCode.A))
+        {
+            playerAnim.SetFloat("Speed", 0f);
+        }
+
         if (Input.GetKey(KeyCode.D))
         {
             moveX = +1f;
             playerAnim.SetFloat("Speed", 1f);
         }
+        else if (Input.GetKeyUp(KeyCode.D))
+        {
+            playerAnim.SetFloat("Speed", 0f);
+        }
+
+        
 
         Vector3 directionMovement = (transform.right * moveX + transform.forward * moveZ).normalized;
         transform.position += directionMovement * moveSpeed * Time.deltaTime;

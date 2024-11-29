@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3256209932934124967}
   - component: {fileID: 6174916266390102306}
   - component: {fileID: 4906867017312824373}
-  - component: {fileID: 5463782775904588229}
   m_Layer: 0
   m_Name: Destroy Mhosue Lod_2
   m_TagString: Untagged
@@ -26,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3435283852042338664}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3681973101742329638}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6174916266390102306
 MeshFilter:
@@ -84,20 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5463782775904588229
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3435283852042338664}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -6504018014260196284, guid: ad2a5f03ec5590e4abdbf9c7e679e153, type: 3}
 --- !u!1 &4058640103551358364
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3681973101742329638}
   - component: {fileID: 3882359548821223313}
+  - component: {fileID: 4562473788090783218}
   m_Layer: 0
   m_Name: Destroy Mhosue
   m_TagString: Untagged
@@ -122,16 +108,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4058640103551358364}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.159845, y: 3.159846, z: 3.159845}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4530894013267632162}
   - {fileID: 816251712473669047}
   - {fileID: 3256209932934124967}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!205 &3882359548821223313
 LODGroup:
@@ -160,6 +146,27 @@ LODGroup:
     renderers:
     - renderer: {fileID: 4906867017312824373}
   m_Enabled: 1
+--- !u!65 &4562473788090783218
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4058640103551358364}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 1
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.1496233, y: 5.8752446, z: 15.508173}
+  m_Center: {x: 5.3690047, y: 2.4373167, z: -1.6413243}
 --- !u!1 &5016010488106277673
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,7 +178,6 @@ GameObject:
   - component: {fileID: 4530894013267632162}
   - component: {fileID: 3954156535339529167}
   - component: {fileID: 8512904120687176598}
-  - component: {fileID: 2263321671889041053}
   m_Layer: 0
   m_Name: Destroy Mhosue Lod_0
   m_TagString: Untagged
@@ -186,13 +192,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5016010488106277673}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3681973101742329638}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3954156535339529167
 MeshFilter:
@@ -244,20 +250,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2263321671889041053
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5016010488106277673}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 3055057088712055741, guid: ad2a5f03ec5590e4abdbf9c7e679e153, type: 3}
 --- !u!1 &5939578190145400674
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,7 +261,6 @@ GameObject:
   - component: {fileID: 816251712473669047}
   - component: {fileID: 2263840402797084972}
   - component: {fileID: 6815315666715641732}
-  - component: {fileID: 1980002360685704297}
   m_Layer: 0
   m_Name: Destroy Mhosue Lod_1
   m_TagString: Untagged
@@ -284,13 +275,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5939578190145400674}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3681973101742329638}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2263840402797084972
 MeshFilter:
@@ -342,17 +333,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1980002360685704297
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5939578190145400674}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 9207301743302582780, guid: ad2a5f03ec5590e4abdbf9c7e679e153, type: 3}

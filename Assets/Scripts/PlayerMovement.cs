@@ -7,22 +7,38 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Player Settings")]
     public float moveSpeed;
+    float sprintSpeed = 30f;
+    bool isMoving = false;
     public float mouseSensibility;
     public Transform cameraTransform;
     public Animator playerAnim;
+    Rigidbody playerRb;
+    public Transform respawn;
+
     [Header("Camera Settings")]
     public float cameraHeight;
     public float cameraDistance;
     [SerializeField] float cameraSmootSpeed;
     public float smoothSpeedMax;
-
     float cooldown = 0f;
     float finalTime = 3f;
-
     float cameraPitch; //Control vertical de la inclinacion de la camara
+
+    [Header("Coleccionables")]
+    public TextMeshProUGUI[] textos;
+    public Animator[] iconAnimators;
+    int gema1 = 0;
+    int gema2 = 0;
+    int gema3 = 0;
+    int gema4 = 0;
 
     private void Start()
     {
+        textos[0].text = gema1.ToString();
+        textos[1].text = gema2.ToString();
+        textos[2].text = gema3.ToString();
+        textos[3].text = gema4.ToString();
+        playerRb = GetComponent<Rigidbody>();
         CursosSetUp();
         cameraSmootSpeed = .5f;
     }
@@ -35,6 +51,54 @@ public class PlayerMovement : MonoBehaviour
     {
         CameraSetUp();
         CoolDown();
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject.tag == "Death")
+        {
+            Debug.Log("Respawn");
+            transform.position = respawn.position;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Gema1")
+        {
+            Destroy(other.gameObject);
+            gema1++;
+            textos[0].text = gema1.ToString();
+            textos[0].gameObject.SetActive(true);
+            iconAnimators[0].SetTrigger("Pick");
+        }
+
+        if(other.gameObject.tag == "Gema2")
+        {
+            Destroy(other.gameObject);
+            gema2 += 2;
+            textos[1].text = gema2.ToString();
+            textos[1].gameObject.SetActive(true);
+            iconAnimators[1].SetTrigger("Pick");
+        }
+
+        if (other.gameObject.tag == "Gema3")
+        {
+            Destroy(other.gameObject);
+            gema3 += 3;
+            textos[2].text = gema3.ToString();
+            textos[2].gameObject.SetActive(true);
+            iconAnimators[2].SetTrigger("Pick");
+        }
+
+        if (other.gameObject.tag == "Gema4")
+        {
+            Destroy(other.gameObject);
+            gema4 += 4;
+            textos[3].text = gema4.ToString();
+            textos[3].gameObject.SetActive(true);
+            iconAnimators[3].SetTrigger("Pick");
+        }
     }
 
 
@@ -76,42 +140,66 @@ public class PlayerMovement : MonoBehaviour
         {
             moveZ = +1f;
             playerAnim.SetFloat("Speed", 1f);
+            isMoving = true;
         }
         else if (Input.GetKeyUp(KeyCode.W))
         {
             playerAnim.SetFloat("Speed", 0f);
+            isMoving = false;
         }
 
         if (Input.GetKey(KeyCode.S))
         {
             moveZ = -1f;
             playerAnim.SetFloat("Speed", 1f);
+            isMoving = true;
         }
         else if (Input.GetKeyUp(KeyCode.S))
         {
             playerAnim.SetFloat("Speed", 0f);
+            isMoving = false;
         }
 
         if (Input.GetKey(KeyCode.A))
         {
             moveX = -1f;
             playerAnim.SetFloat("Speed", 1f);
+            isMoving = true;
         }
         else if (Input.GetKeyUp(KeyCode.A))
         {
             playerAnim.SetFloat("Speed", 0f);
+            isMoving = false;
         }
 
         if (Input.GetKey(KeyCode.D))
         {
             moveX = +1f;
             playerAnim.SetFloat("Speed", 1f);
+            isMoving = true;
         }
         else if (Input.GetKeyUp(KeyCode.D))
         {
             playerAnim.SetFloat("Speed", 0f);
+            isMoving = false;
         }
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && isMoving == true)
+        {
+            moveSpeed = sprintSpeed;
+            playerAnim.SetBool("Run", true);
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            moveSpeed = 10f;
+            playerAnim.SetBool("Run", false);
+        }
         
 
         Vector3 directionMovement = (transform.right * moveX + transform.forward * moveZ).normalized;

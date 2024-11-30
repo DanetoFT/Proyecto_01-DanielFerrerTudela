@@ -8,6 +8,7 @@ TagManager:
   - Gema2
   - Gema3
   - Gema4
+  - Death
   layers:
   - Default
   - TransparentFX

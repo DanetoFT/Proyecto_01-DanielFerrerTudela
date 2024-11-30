@@ -9,6 +9,7 @@ TagManager:
   - Gema3
   - Gema4
   - Death
+  - Ground
   layers:
   - Default
   - TransparentFX

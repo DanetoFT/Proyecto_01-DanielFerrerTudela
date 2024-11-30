@@ -1,19 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Player Settings")]
     public float moveSpeed;
     float sprintSpeed = 30f;
+    public float jumpForce = 10f;
     bool isMoving = false;
     public float mouseSensibility;
     public Transform cameraTransform;
     public Animator playerAnim;
     Rigidbody playerRb;
     public Transform respawn;
+    bool isOnGround = true;
 
     [Header("Camera Settings")]
     public float cameraHeight;
@@ -31,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
     int gema2 = 0;
     int gema3 = 0;
     int gema4 = 0;
+
 
     private void Start()
     {
@@ -55,10 +59,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if(other.gameObject.tag == "Death")
+        if(other.gameObject.tag == "Ground")
         {
-            Debug.Log("Respawn");
-            transform.position = respawn.position;
+            isOnGround = true;
+            playerAnim.SetBool("Jump", false);
         }
     }
 
@@ -100,6 +104,7 @@ public class PlayerMovement : MonoBehaviour
             iconAnimators[3].SetTrigger("Pick");
         }
     }
+
 
 
     //Esto es para el pequeño paneo del principio, me pareció que quedaba chulo
@@ -184,11 +189,15 @@ public class PlayerMovement : MonoBehaviour
             isMoving = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        //salto
+        if (Input.GetKeyDown(KeyCode.Space) && isOnGround)
         {
-
+            playerRb.AddForce(new Vector3(0f, jumpForce, 0f), ForceMode.Impulse);
+            playerAnim.SetBool("Jump", true);
+            isOnGround = false;
         }
 
+        //Sprint
         if (Input.GetKeyDown(KeyCode.LeftShift) && isMoving == true)
         {
             moveSpeed = sprintSpeed;

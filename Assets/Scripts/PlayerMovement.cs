@@ -57,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
         CoolDown();
     }
 
+    //Volver de la animacion de salto
     private void OnCollisionEnter(Collision other)
     {
         if(other.gameObject.tag == "Ground")
@@ -66,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    //Recoger diferentes gemas con diferentes valores
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Gema1")
@@ -118,7 +120,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    //Esto es para el pequeño paneo del principio, me pareció que quedaba chulo
     void VelocidadCamara()
     {
         cameraSmootSpeed += Time.deltaTime;
@@ -140,7 +141,6 @@ public class PlayerMovement : MonoBehaviour
         float moveZ = 0f;
 
         //pido perdón por tantos ifs y elses pero no encontraba otra forma de hacer las animaciones de movimiento
-
         if (Input.GetKey(KeyCode.W))
         {
             moveZ = +1f;
@@ -197,7 +197,7 @@ public class PlayerMovement : MonoBehaviour
             isOnGround = false;
         }
 
-        //Sprint
+        //Sprint (al sprintar el jugador atraviesa los colliders, he comprobado que es por ir demasiado rápido)
         if (Input.GetKeyDown(KeyCode.LeftShift) && isMoving == true)
         {
             moveSpeed = sprintSpeed;
